@@ -38,7 +38,8 @@ public class ByteIOExamples {
     }
 
     /**
-     * Liest den binären Inhalt von srcFile und schreibt ihn unverändert nach destFile unter Verwendung von Input- und Outputstreams
+     * Liest den binären Inhalt von srcFile und schreibt ihn unverändert nach destFile
+     * unter Verwendung von Input- und Outputstreams.
      *
      * @param srcFile
      * @param destFile
@@ -62,6 +63,10 @@ public class ByteIOExamples {
             int bytesRead; // Anzahl der gelesenen Bytes
 
             // Kopiert die gesamte Datei
+            //in.read(...) versucht mit jedem Aufruf buffer.length bytes in buffer einzulesen
+            //in.read(...) liefert dabei die Anzahl der wirklich gelesenen Bytes zurück
+            // (z.B. weniger, wenn weniger als buffer.length bytes übrig sind zu lesen),
+            //bzw. -1 wenn das Ende des Streams erreicht ist.
             while ((bytesRead = in.read(buffer, 0, buffer.length)) > 0) {
                 out.write(buffer, 0, bytesRead);
             }
