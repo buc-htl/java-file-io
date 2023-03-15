@@ -9,6 +9,10 @@ import java.util.List;
 public class TextIOExample {
 
 
+    public static void main(String[] args) {
+        TextIOExample.runExamples();
+    }
+
     public static void runExamples() {
         try {
 

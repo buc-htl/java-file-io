@@ -6,6 +6,10 @@ import java.util.Arrays;
 public class ByteIOExamples {
 
 
+    public static void main(String[] args) {
+        ByteIOExamples.runExamples();
+    }
+
     public static void runExamples() {
         try {
            ByteIOExamples.copyFile("resources/schwarzspecht.jpg", "resources/schwarzspecht2.jpg");
@@ -101,17 +105,30 @@ public class ByteIOExamples {
         ) {
             byte[] buffer = new byte[5]; // Lesebuffer
             int bytesRead; // Anzahl der gelesenen Bytes
+
+            //liest max. 2 bytes vom Inputstream in buffer
+            //die gelesenen bytes werden in buffer beginnend bei index 0 gespeichert
             bytesRead = in.read(buffer, 0, 2);
+
             System.out.println("# gelesene Bytes: "+bytesRead);
             System.out.println("gelesene Bytes: "+ Arrays.toString(buffer));
+
+            System.out.print("gelesene Bytes als hexadezimale Zahlen: ");
+            for (byte b: buffer) {
+                System.out.printf("0x%02X ", b);
+            }
+            System.out.println("\n");
+
+            //überspringt 2 Bytes vom Inputstream
             in.skip(2);
+
+            //liest max. die nächsten 3 bytes vom Inputstream
+            //in das Array buffer, beginnend beim Index 2
             bytesRead = in.read(buffer, 2,3);
+
             System.out.println("# gelesene Bytes: "+bytesRead);
             System.out.println("gelesene Bytes: "+ Arrays.toString(buffer));
         }
 
     }
-
-
-
 }
